@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --sandalwood-light: #FDF5E6;
+  --sandalwood-medium: #C19A6B;
+  --sandalwood-dark: #8B5A2B;
+  --sandalwood-deep: #5D3A1A;
+  --gold-primary: #D4AF37;
+  --gold-light: #FFD700;
+  --accent-blue: #1A3A5F;
+  --text-main: #3E2712;
+  --text-muted: #6D4C41;
+  
+  --shadow-warm: 0 10px 30px rgba(62, 39, 18, 0.1);
+  --border-radius-wood: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--sandalwood-light);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+  color: var(--sandalwood-deep);
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+/* Responsive Typography */
+h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+h3 { font-size: clamp(1.4rem, 4vw, 1.8rem); }
+
+/* Texture overlay */
+.wood-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.premium-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .premium-container {
+    padding: 0 1rem;
+  }
+}
+
+.carved-section {
+  background: white;
+  border-radius: var(--border-radius-wood);
+  box-shadow: var(--shadow-warm);
+  border: 1px solid rgba(139, 90, 43, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.carved-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sandalwood-dark), var(--gold-primary), var(--sandalwood-dark));
+}
+
+.title-underline {
+  height: 3px;
+  width: 60px;
+  background: var(--gold-primary);
+  margin: 0.5rem 0 1.5rem 0;
+  border-radius: 2px;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--sandalwood-dark);
+  color: var(--sandalwood-light);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+  background: var(--sandalwood-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(93, 58, 26, 0.3);
+}
+/* Team Page & Player Roster Styles */
+.team-page {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.player-card {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.player-card:hover {
+  box-shadow: 0 15px 35px rgba(62, 39, 18, 0.15);
+}
+
+/* Custom Scrollbar for better aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sandalwood-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sandalwood-medium);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sandalwood-dark);
+}
