@@ -27,17 +27,26 @@ const Organizers = () => {
             background: 'linear-gradient(135deg, #ffffff 0%, #FDF5E6 100%)'
           }}>
             <div style={{
-              width: '60px',
-              height: '60px',
+              width: '80px',
+              height: '80px',
               borderRadius: '50%',
               backgroundColor: 'var(--sandalwood-light)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               border: '2px solid var(--sandalwood-medium)',
-              boxShadow: '0 4px 8px rgba(0,0,0,0.05)'
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
             }}>
-              <User size={30} color="var(--sandalwood-dark)" />
+              {organizer.image ? (
+                <img 
+                  src={organizer.image} 
+                  alt={organizer.name} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                />
+              ) : (
+                <User size={40} color="var(--sandalwood-dark)" />
+              )}
             </div>
             <div>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '0.2rem', color: 'var(--sandalwood-deep)' }}>

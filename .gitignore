@@ -47,6 +47,8 @@ gcl5-app/node_modules/
 # If you want to keep the snapshots, uncomment the lines above or remove the pattern.
 # For now, I'll ignore everything but standard configs.
 *.json
+
+
 !package.json
 !package-lock.json
 !manifest.json
