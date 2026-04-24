@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar" style={{
-      padding: '0.8rem 2rem',
+      padding: '0.8rem 1rem',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -19,20 +19,20 @@ const Navbar = () => {
       zIndex: 1000,
       borderBottom: '2px solid rgba(139, 90, 43, 0.1)',
       flexWrap: 'wrap',
-      gap: '1rem'
+      gap: '0.8rem'
     }}>
-      <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
         <img 
           src={gclLogo} 
           alt="GCL 5" 
           style={{ 
-            height: '45px', 
+            height: '40px', 
             width: 'auto',
             filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
           }} 
         />
         <h2 style={{ 
-          fontSize: '1.2rem', 
+          fontSize: '1.1rem', 
           letterSpacing: '1px', 
           color: 'var(--sandalwood-deep)', 
           margin: 0,
@@ -42,47 +42,61 @@ const Navbar = () => {
       
       <div className="nav-links" style={{ 
         display: 'flex', 
-        gap: '1.5rem',
+        gap: '1.2rem',
         overflowX: 'auto',
-        maxWidth: '100%',
-        paddingBottom: '5px'
+        paddingBottom: '2px',
+        flexGrow: 1,
+        justifyContent: 'flex-end',
+        minWidth: '280px'
       }}>
         <NavLink icon={<Calendar size={16}/>} text="Schedule" isHome={isHome} />
         <NavLink icon={<Users size={16}/>} text="Teams" isHome={isHome} />
-        <NavLink icon={<Trophy size={16}/>} text="Stats" isHome={isHome} />
+        <NavLink icon={<Trophy size={16}/>} text="Stats" isHome={isHome} to="/stats" sectionId="#stats" />
         <NavLink icon={<Info size={16}/>} text="Heritage" isHome={isHome} />
       </div>
-
-      <button className="btn-primary" style={{ fontSize: '0.8rem', padding: '0.6rem 1rem' }}>Register</button>
     </nav>
   );
 };
 
-const NavLink = ({ icon, text, isHome }) => {
-  const target = `#${text.toLowerCase()}`;
+const NavLink = ({ icon, text, isHome, to, sectionId }) => {
+  const target = sectionId || `#${text.toLowerCase()}`;
+  const isDedicatedPage = !!to;
   
-  // If we're on the home page, use a plain anchor for smooth scroll
-  // If we're on another page, use a link to the home page with the hash
+  if (isHome && !isDedicatedPage) {
+    return (
+      <a 
+        href={target}
+        style={navLinkStyle} 
+        className="nav-link-item"
+      >
+        {icon}
+        <span>{text}</span>
+      </a>
+    );
+  }
+
   return (
-    <a 
-      href={isHome ? target : `/${target}`}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem',
-        textDecoration: 'none',
-        color: 'var(--text-muted)',
-        fontWeight: 600,
-        fontSize: '0.95rem',
-        transition: 'color 0.3s'
-      }} 
-      onMouseEnter={(e) => e.target.style.color = 'var(--sandalwood-dark)'}
-      onMouseLeave={(e) => e.target.style.color = 'var(--text-muted)'}
+    <Link 
+      to={to || `/${target}`}
+      style={navLinkStyle}
+      className="nav-link-item"
     >
       {icon}
       <span>{text}</span>
-    </a>
+    </Link>
   );
+};
+
+const navLinkStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.4rem',
+  textDecoration: 'none',
+  color: 'var(--text-muted)',
+  fontWeight: 600,
+  fontSize: '0.9rem',
+  transition: 'color 0.3s',
+  whiteSpace: 'nowrap'
 };
 
 export default Navbar;

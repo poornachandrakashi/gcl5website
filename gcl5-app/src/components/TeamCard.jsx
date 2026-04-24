@@ -75,19 +75,6 @@ const TeamCard = ({ team }) => {
           {team.location}
         </div>
 
-        <div style={{
-          padding: '0.3rem 1rem',
-          borderRadius: '20px',
-          fontSize: '0.8rem',
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          letterSpacing: '1px',
-          backgroundColor: team.color + '20',
-          color: team.color,
-          border: `1px solid ${team.color}40`
-        }}>
-          GCL 5 Competitor
-        </div>
       </motion.div>
     </Link>
   );

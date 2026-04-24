@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import TeamCard from '../components/TeamCard';
 import Stats from '../components/Stats';
 import Organizers from '../components/Organizers';
+import MatchCenter from '../components/MatchCenter';
 import { teams } from '../data/teams';
 import { motion } from 'framer-motion';
 
@@ -12,6 +13,8 @@ const Home = () => {
       <Hero />
       
       <main className="premium-container" style={{ padding: '4rem 2rem' }}>
+        <MatchCenter />
+        
         <section id="teams" style={{ marginBottom: '6rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Tournament Teams</h2>

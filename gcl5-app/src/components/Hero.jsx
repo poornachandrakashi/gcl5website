@@ -6,12 +6,12 @@ const Hero = () => {
   return (
     <section className="hero" style={{
       textAlign: 'center',
-      padding: '6rem 2rem',
+      padding: 'clamp(4rem, 15vh, 8rem) 1rem',
       position: 'relative',
       background: 'linear-gradient(rgba(253, 245, 230, 0.8), rgba(253, 245, 230, 0.8)), url("https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      minHeight: '80vh',
+      minHeight: '70vh',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -23,9 +23,9 @@ const Hero = () => {
         transition={{ duration: 1 }}
       >
         <img src={logo} alt="GCL 5 Logo" style={{
-          width: '240px',
+          width: 'clamp(140px, 40vw, 240px)',
           height: 'auto',
-          marginBottom: '2rem',
+          marginBottom: '1rem',
           filter: 'drop-shadow(0 15px 30px rgba(62, 39, 18, 0.3))'
         }} />
         

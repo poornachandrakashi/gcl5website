@@ -1,14 +1,63 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, User, Award, Shield, Trophy } from 'lucide-react';
+import { ArrowLeft, User, Award, Shield, Trophy, Activity, Star } from 'lucide-react';
 import { teams } from '../data/teams';
 import gclLogo from '../assets/logo.png';
 
 const TeamPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const team = teams.find(t => t.id === parseInt(id));
+  const initialTeam = teams.find(t => t.id === parseInt(id));
+  const [team, setTeam] = useState(initialTeam);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setTeam(initialTeam);
+    if (initialTeam && initialTeam.apiId) {
+      fetchApiData(initialTeam);
+    }
+  }, [id, initialTeam]);
+
+  const fetchApiData = async (currentTeam) => {
+    setLoading(true);
+    try {
+      // In a real scenario, this would be a proxy or direct fetch if CORS allows.
+      // For this integration, we'll implement the structure to handle the provided JSON format.
+      // The user provided the data structure in the request.
+      
+      const response = await fetch(`https://cricheroes.com/_next/data/VJCa1OqVcXtUf3QXmrsKn/team-profile/${currentTeam.apiId}/bengaluru-united/members.json?teamId=${currentTeam.apiId}&teamName=bengaluru-united&tabName=members`);
+      const resData = await response.json();
+      
+      if (resData && resData.pageProps && resData.pageProps.members && resData.pageProps.members.data) {
+        const apiMembers = resData.pageProps.members.data.members;
+        const mappedPlayers = apiMembers.map(member => ({
+          id: member.player_id,
+          name: member.name,
+          image: member.profile_photo || "https://media.cricheroes.in/default/user_profile.png",
+          role: member.is_captain ? "Captain" : member.is_admin ? "Admin" : "Player",
+          specialty: [member.player_skill, member.batter_category, member.bowler_category]
+            .filter(Boolean)
+            .join(" • ") || "Cricketer",
+          skill: member.player_skill,
+          isPro: member.is_player_pro
+        }));
+
+        setTeam({
+          ...currentTeam,
+          name: resData.pageProps.members.data.name || currentTeam.name,
+          logo: resData.pageProps.members.data.logo || currentTeam.logo,
+          players: mappedPlayers
+        });
+      }
+    } catch (err) {
+      console.error("Failed to fetch API data:", err);
+      // Fallback to static data is already handled by initial state
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!team) {
     return (
@@ -25,7 +74,7 @@ const TeamPage = () => {
     <div className="team-page" style={{ minHeight: '100vh', paddingBottom: '4rem' }}>
       {/* Navigation Header */}
       <nav style={{ 
-        padding: '1.5rem 2rem', 
+        padding: '1rem', 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center',
@@ -34,7 +83,9 @@ const TeamPage = () => {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        borderBottom: '1px solid var(--sandalwood-medium)'
+        borderBottom: '1px solid var(--sandalwood-medium)',
+        flexWrap: 'wrap',
+        gap: '0.5rem'
       }}>
         <button 
           onClick={() => navigate('/')}
@@ -45,12 +96,13 @@ const TeamPage = () => {
             alignItems: 'center', 
             gap: '0.5rem',
             color: 'var(--sandalwood-deep)',
-            fontWeight: 600
+            fontWeight: 600,
+            fontSize: '0.9rem'
           }}
         >
-          <ArrowLeft size={20} /> Back to Tournament
+          <ArrowLeft size={20} /> Back
         </button>
-        <img src={gclLogo} alt="GCL 5" style={{ height: '40px' }} />
+        <img src={gclLogo} alt="GCL 5" style={{ height: '35px' }} />
       </nav>
 
       {/* Hero Section for Team */}
@@ -82,8 +134,8 @@ const TeamPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             style={{
-              width: '180px',
-              height: '180px',
+              width: 'clamp(120px, 30vw, 180px)',
+              height: 'clamp(120px, 30vw, 180px)',
               borderRadius: '50%',
               background: 'white',
               margin: '0 auto 2rem auto',
@@ -101,15 +153,20 @@ const TeamPage = () => {
               style={{ width: '80%', height: '80%', objectFit: 'contain' }} 
               onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
             />
-            <div style={{ display: 'none', fontSize: '4rem', color: team.color, fontFamily: 'Cinzel' }}>
+            <div style={{ display: 'none', fontSize: '3rem', color: team.color, fontFamily: 'Cinzel' }}>
               {team.name.charAt(0)}
             </div>
           </motion.div>
 
-          <h1 style={{ color: 'white', marginBottom: '0.5rem', textShadow: '2px 2px 4px rgba(0,0,0,0.2)' }}>
+          <h1 style={{ 
+            color: 'white', 
+            marginBottom: '0.5rem', 
+            textShadow: '2px 2px 4px rgba(0,0,0,0.2)',
+            fontSize: 'clamp(1.5rem, 8vw, 3rem)'
+          }}>
             {team.name}
           </h1>
-          <p style={{ fontSize: '1.2rem', opacity: 0.9, fontWeight: 500 }}>
+          <p style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', opacity: 0.9, fontWeight: 500 }}>
             Representing {team.location} • GCL Season 5
           </p>
         </div>
@@ -120,13 +177,28 @@ const TeamPage = () => {
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h2 style={{ marginBottom: '0.5rem' }}>Team Roster</h2>
           <div className="title-underline" style={{ margin: '0 auto' }}></div>
-          <p style={{ color: 'var(--text-muted)' }}>The 15 warriors ready for battle</p>
+          <p style={{ color: 'var(--text-muted)' }}>The {team.players.length} warriors ready for battle</p>
         </div>
+
+        {loading && (
+          <div style={{ textAlign: 'center', padding: '2rem' }}>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              style={{ display: 'inline-block' }}
+            >
+              <Activity size={40} color="var(--gold-primary)" />
+            </motion.div>
+            <p style={{ marginTop: '1rem', color: 'var(--text-muted)' }}>Enlisting real-time data...</p>
+          </div>
+        )}
 
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-          gap: '1.5rem' 
+          gap: '1.5rem',
+          opacity: loading ? 0.6 : 1,
+          transition: 'opacity 0.3s'
         }}>
           {team.players.map((player, index) => (
             <motion.div
@@ -144,9 +216,26 @@ const TeamPage = () => {
                 alignItems: 'center', 
                 gap: '1rem',
                 background: 'white',
-                borderLeft: player.role !== 'Player' ? `6px solid var(--gold-primary)` : '1px solid rgba(0,0,0,0.05)'
+                borderLeft: player.role !== 'Player' ? `6px solid var(--gold-primary)` : '1px solid rgba(0,0,0,0.05)',
+                position: 'relative'
               }}
             >
+              {player.isPro && (
+                <div style={{
+                  position: 'absolute',
+                  top: '0.5rem',
+                  right: '0.5rem',
+                  background: 'var(--gold-primary)',
+                  color: 'white',
+                  fontSize: '0.6rem',
+                  fontWeight: 900,
+                  padding: '0.1rem 0.4rem',
+                  borderRadius: '4px',
+                  textTransform: 'uppercase'
+                }}>
+                  PRO
+                </div>
+              )}
               <div style={{ 
                 width: '70px', 
                 height: '70px', 
