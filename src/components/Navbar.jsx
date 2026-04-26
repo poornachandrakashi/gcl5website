@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import gclLogo from '../assets/logo.png';
-import { Calendar, Users, Trophy, Info } from 'lucide-react';
+import { Calendar, Users, Trophy, Info, Handshake, MessageCircle } from 'lucide-react';
 
 const Navbar = () => {
   const location = useLocation();
@@ -52,6 +52,8 @@ const Navbar = () => {
         <NavLink icon={<Calendar size={16}/>} text="Schedule" isHome={isHome} />
         <NavLink icon={<Users size={16}/>} text="Teams" isHome={isHome} />
         <NavLink icon={<Trophy size={16}/>} text="Stats" isHome={isHome} to="/stats" sectionId="#stats" />
+        <NavLink icon={<Handshake size={16}/>} text="Sponsors" isHome={isHome} to="/sponsors" />
+        <NavLink icon={<MessageCircle size={16}/>} text="Fan Wall" isHome={isHome} to="/fan-wall" />
         <NavLink icon={<Info size={16}/>} text="Heritage" isHome={isHome} />
       </div>
     </nav>

@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import TeamPage from './pages/TeamPage';
 import Stats from './pages/Stats';
+import Sponsors from './pages/Sponsors';
+import FanWall from './pages/FanWall';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/team/:id" element={<TeamPage />} />
         <Route path="/stats" element={<Stats />} />
+        <Route path="/sponsors" element={<Sponsors />} />
+        <Route path="/fan-wall" element={<FanWall />} />
       </Routes>
 
       <footer style={{

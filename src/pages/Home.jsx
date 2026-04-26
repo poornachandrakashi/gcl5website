@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import TeamCard from '../components/TeamCard';
 import Stats from '../components/Stats';
+import FanZone from '../components/FanZone';
 import Organizers from '../components/Organizers';
 import MatchCenter from '../components/MatchCenter';
 import { teams } from '../data/teams';
@@ -45,6 +46,8 @@ const Home = () => {
         </section>
 
         <Stats />
+
+        <FanZone />
 
         <section id="schedule" style={{ marginBottom: '6rem' }}>
           <div className="carved-section" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
