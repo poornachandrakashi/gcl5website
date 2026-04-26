@@ -8,6 +8,8 @@ const FanZone = () => {
     'Royal Tigers Bidadi': 0,
     'Sonda Warriors': 0,
     'Murdeshwar Blasters': 0,
+    'Sirsi Royals': 0,
+    'Udupi Smashers': 0,
     'Rural Challengers Bengaluru': 0,
     'Others': 0
   });
@@ -298,23 +300,22 @@ const FanZone = () => {
         gap: '2rem',
         flexWrap: 'wrap'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', textAlign: 'left' }}>
           <MessageSquare size={32} color="var(--gold-primary)" />
           <div>
-            <h4 style={{ color: 'var(--gold-primary)', margin: 0 }}>Community Wall</h4>
-            <p style={{ margin: 0, opacity: 0.7, fontSize: '0.9rem' }}>Join the conversation on our official social groups.</p>
+            <h4 style={{ color: 'var(--gold-primary)', margin: 0 }}>Fan Message Wall</h4>
+            <p style={{ margin: 0, opacity: 0.7, fontSize: '0.9rem' }}>Post your own cheers and read what the community is saying!</p>
           </div>
         </div>
         <div style={{ display: 'flex', gap: '1rem' }}>
-          <button className="gold-button" style={{ padding: '0.6rem 1.5rem', fontSize: '0.8rem' }}>Join WhatsApp</button>
-          <button style={{ 
-            background: 'transparent', 
-            color: '#white', 
-            border: '1px solid var(--gold-primary)',
-            padding: '0.6rem 1.5rem',
-            borderRadius: '8px',
-            fontSize: '0.8rem'
-          }}>Instagram</button>
+          <a href="/fan-wall" className="gold-button" style={{ 
+            padding: '0.6rem 2rem', 
+            fontSize: '0.9rem',
+            textDecoration: 'none',
+            display: 'inline-block'
+          }}>
+            GO TO FAN WALL
+          </a>
         </div>
       </div>
     </section>

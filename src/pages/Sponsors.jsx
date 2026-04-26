@@ -8,12 +8,12 @@ const SponsorCard = ({ sponsor, tier }) => {
   
   return (
     <div className="carved-section" style={{
-      padding: isPlatinum ? '3rem' : '2rem',
+      padding: isPlatinum ? '3rem' : (isGold ? '2rem' : '1.5rem'),
       textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      gap: '1rem',
+      gap: isPlatinum ? '1rem' : '0.5rem',
       background: 'linear-gradient(135deg, #ffffff 0%, #FDF5E6 100%)',
       transition: 'transform 0.3s ease',
       cursor: 'pointer'
@@ -23,20 +23,27 @@ const SponsorCard = ({ sponsor, tier }) => {
     >
       <div style={{
         padding: '1rem',
-        borderRadius: '12px',
+        borderRadius: '50%',
         backgroundColor: '#fff',
-        boxShadow: '0 8px 16px rgba(0,0,0,0.05)',
-        marginBottom: '1rem',
-        width: isPlatinum ? '200px' : '150px',
-        height: isPlatinum ? '100px' : '80px',
+        boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
+        marginBottom: '1.5rem',
+        width: isPlatinum ? '180px' : '140px',
+        height: isPlatinum ? '180px' : '140px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        border: `3px solid ${isPlatinum ? 'var(--gold-primary)' : 'rgba(139, 90, 43, 0.1)'}`,
+        overflow: 'hidden'
       }}>
         <img 
           src={sponsor.logo} 
           alt={sponsor.name} 
-          style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} 
+          style={{ 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover',
+            borderRadius: '50%'
+          }} 
         />
       </div>
       <h3 style={{ 
@@ -87,8 +94,10 @@ const SponsorTier = ({ title, data, tier, icon: Icon, color }) => {
       
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-        gap: '2.5rem',
+        gridTemplateColumns: tier === 'silver' 
+          ? 'repeat(auto-fit, minmax(180px, 1fr))' 
+          : 'repeat(auto-fit, minmax(280px, 1fr))', 
+        gap: tier === 'silver' ? '1.5rem' : '2.5rem',
         maxWidth: tier === 'platinum' ? '800px' : '1200px',
         margin: '0 auto'
       }}>

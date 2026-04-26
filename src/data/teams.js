@@ -244,5 +244,52 @@ export const teams = [
       { id: 21517616, name: "Shashank Chitari", role: "Player", specialty: "BAT", image: "https://media.cricheroes.in/user_profile/1715831087254_GdrEbF6K0IDW.jpg" },
       { id: 29935331, name: "Shri Ganesh", role: "Player", specialty: "BAT", image: "https://media.cricheroes.in/default/user_profile.png" }
     ]
+  },
+  {
+    id: 11,
+    name: "Sirsi Royals",
+    location: "Sagar (Karnataka)",
+    logo: "https://media.cricheroes.in/team_logo/1777028757149_YI8TQs2J1K0f.jpg",
+    color: "#E74C3C",
+    apiId: 13283932,
+    players: [
+      { id: 880743, name: "Roshan Gudigar", role: "Captain", specialty: "BAT • Classicist", image: "https://media.cricheroes.in/user_profile/1651827991350_FOiF5CZpBrwP.jpeg" },
+      { id: 773646, name: "Aditya Gudigar", role: "Player", specialty: "BAT • Classicist", image: "https://media.cricheroes.in/user_profile/1745749195215_EPoqZPrMoqp7.jpeg" },
+      { id: 769694, name: "akshay mahesh", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1652611185941_NGdEQmEf2D54.jpg" },
+      { id: 773835, name: "Ananthkumar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1777098565138_63MDW39Xd85e.jpg" },
+      { id: 747266, name: "Chinmay Shetty", role: "Player", specialty: "BAT • Classicist", image: "https://media.cricheroes.in/user_profile/1651826953980_n1IM6gyTsDSB.jpg" },
+      { id: 747244, name: "Darshan Gudigar", role: "Player", specialty: "ALL • Accumulator • Aspirant", image: "https://media.cricheroes.in/user_profile/1524270036662_BmLPCbKaSkMt.jpg" },
+      { id: 14205333, name: "Dheeraj Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1745730813882_Ag4xJAuI6tVR.jpg" },
+      { id: 771698, name: "Manjunath Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 747255, name: "Prakash Gudigar", role: "Player", specialty: "BAT • Hard Hitter", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 14198469, name: "Praveen Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 8912379, name: "Rohit Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 747264, name: "Sandesh Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1524303027306_KkcZ4nI0SRdo.jpg" },
+      { id: 747232, name: "Sanket Gudigar", role: "Player", specialty: "BAT • Classicist", image: "https://media.cricheroes.in/user_profile/1617552553950_TuBj9nu8LCHa.jpg" },
+      { id: 14351496, name: "Shreyas Shet", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" }
+    ]
+  },
+  {
+    id: 12,
+    name: "Udupi Smashers",
+    location: "Sagar (Karnataka)",
+    logo: "https://media.cricheroes.in/team_logo/1777028735408_5IKqCxyWdACf.jpg",
+    color: "#27AE60",
+    apiId: 13284021,
+    players: [
+      { id: 764955, name: "Pratheek P Gudigar", role: "Captain", specialty: "BAT • Classicist", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 50200279, name: "Arjun Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 8912405, name: "Avinash Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 764923, name: "Harish S Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1524193247928_UgMDKCLBblCs.jpg" },
+      { id: 8721645, name: "Harsha Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1617281790706_9qzcL5ZarO1C.jpg" },
+      { id: 8912408, name: "Jyeshta Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 14292912, name: "Jyeshta Gudigar (B)", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1777037194855_ae0DMZVFvVPy.jpeg" },
+      { id: 8717941, name: "Omkar Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1617268843914_yxdE75t6PiXI.jpg" },
+      { id: 20973763, name: "Pramod Shet", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 50200280, name: "Rahul Gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/default/user_profile.png" },
+      { id: 14412105, name: "rajath gudigar", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1683524913810_DA4UOyhFtofS.jpg" },
+      { id: 21270922, name: "Sankalp Ganesh", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1750785071494_dt3MyvYNsieX.jpg" },
+      { id: 39235286, name: "Surya Gudigar Udupi", role: "Player", specialty: "Cricketer", image: "https://media.cricheroes.in/user_profile/1777035127358_6YMtY8bX9WbE.jpeg" }
+    ]
   }
 ];
