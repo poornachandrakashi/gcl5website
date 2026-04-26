@@ -20,7 +20,7 @@ export const organizers = [
   { id: 6, name: "Chinmay Suresh Gudigar", role: "Organizing Committee", image: chinmayImg },
   { id: 7, name: "Shekhar Gudigar", role: "Organizing Committee", image: shekarImg },
   { id: 8, name: "Sagar V J", role: "Organizing Committee", image: sagarVjImg },
-  { id: 9, name: "Gourav Doddamane", role: "Organizing Committee", image: gauravImg },
+  { id: 9, name: "Gaurav Doddamane", role: "Organizing Committee", image: gauravImg },
   { id: 10, name: "Poornachandra Kashi", role: "Organizing Committee", image: poornaImg },
   { id: 11, name: "Bhuvan Venkatesh", role: "Organizing Committee", image: bhuvanImg },
   { id: 12, name: "Manjunath Biligi", role: "Organizing Committee", image: manjunathImg }
